@@ -1,5 +1,5 @@
 <template>
-
+	<div>jiangbo</div>
 </template>
 
 <script setup>
