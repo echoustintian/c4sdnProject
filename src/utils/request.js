@@ -1,6 +1,5 @@
-import Axios from "axios";
+import axios from "axios";
 
-const axios = Axios
 // 配置不同环境下，axios的默认请求地址
 if (process.env.NODE_ENV == 'development'){
   axios.defaults.baseURL = ''
@@ -24,5 +23,91 @@ axios.interceptors.request.use(
   }
 )
 
+const errorHandle = (status, other) => {
+  // 状态码判断
+  switch (status) {
+    // 401: 未登录状态，跳转登录页
+    case 401:
+      console.log("未登录");
+      break;
+    // 403 token过期
+    // 清除token并跳转登录页
+    case 403:
+      localStorage.removeItem('token');
+      console.log("登录状态过期");
+      break;
+    // 404请求不存在
+    case 404:
+      console.log(404);
+      break;
+    default:
+      console.log(other);   
+  }
+}
+
+// 响应拦截器
+axios.interceptors.response.use(
+  (res) => {
+    return res.status === 200 ? Promise.resolve(res) : Promise.reject(res)
+  },
+  (err) => {
+    const { response } = err;
+    if (response) {
+      // 请求已发出，但是不在2xx的范围 
+      errorHandle(response.status, response.data.message);
+      return Promise.reject(response);
+    }
+  }
+)
+
 // 封装 get 请求函数
 // 参数 ： url 类型string 必选； params 类型实现IAnyObj的对象 必选； clearFn 类型Fn 可选 用于处理返回值的回调函数
+/**
+ * 
+ * @param {String} url 请求路径
+ * @param {Object} params 参数
+ * @param {Function} clearFn 用于处理返回值的回调函数
+ */
+export const get = (url, params, clearFn)=>{
+  return new Promise((resolve,reject)=>{
+    axios.get(url,{params}).then(
+      success =>{
+        let res;
+        if (clearFn != undefined){
+          res = clearFn(success.data)
+        }else {
+          res = success.data
+        }
+        resolve([null,res])
+      }
+    ).catch((err)=>{
+      resolve([err,null])
+    })
+  })
+}
+
+// 封装 post 请求函数
+// 参数 ： url 类型string 必选； params 类型实现IAnyObj的对象 必选； clearFn 类型Fn 可选 用于处理返回值的回调函数
+/**
+ * 
+ * @param {String} url 请求路径
+ * @param {Object} params 参数
+ * @param {Function} clearFn 用于处理返回值的回调函数
+ */
+export const post = (url, params, clearFn)=>{
+  return new Promise((resolve,reject)=>{
+    axios.post(url,params).then(
+      success =>{
+        let res;
+        if (clearFn != undefined){
+          res = clearFn(success.data)
+        }else {
+          res = success.data
+        }
+        resolve([null,res])
+      }
+    ).catch((err)=>{
+      resolve([err,null])
+    })
+  })
+}
