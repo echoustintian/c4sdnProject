@@ -1,9 +1,10 @@
 <template>
-  
+
 </template>
 
 <script lang="js">
-import { defineComponent } from 'vue'
+import { defineComponent, reactive } from 'vue'
+import router from '@/router'
 export default defineComponent({
   setup() {
 
@@ -13,3 +14,7 @@ export default defineComponent({
   }
 })
 </script>
+
+<style scoped >
+
+</style>

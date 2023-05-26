@@ -4,11 +4,11 @@ const router = createRouter({
   // 使用 hash 模式
   history: createWebHashHistory(),
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'home',
-    //   component: ()=> import('../views/MainPage.vue')
-    // },
+    {
+      path: '/',
+      name: 'home',
+      component: ()=> import('../views/system/index.vue')
+    },
     {
       path: '/login',
       name: 'login',
