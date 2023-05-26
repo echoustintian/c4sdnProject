@@ -1,0 +1,123 @@
+<template>
+    <div class="leftbar">
+
+        <el-menu default-active="2" class="el-menu-vertical-demo" background-color="#2d3d51" text-color="#BFCBD9"
+            :collapse="isCollapse">
+            <div class="mb-2 logobox">
+                <img src="@/assets/img/logo.png" alt="logo" style="">
+                <span v-show="!isCollapse">SDN平台</span>
+            </div>
+            <el-sub-menu v-for="menu in menus" :key="menu.menuid" :index="menu.label">
+                <template #title>
+                    <el-icon>
+                        <component :is="menu.icon"></component>
+                    </el-icon>
+                    <span>{{ menu.label }}</span>
+                </template>
+                <el-menu-item v-for="childmenu in menu.menus" :key="childmenu.menuid" :index="childmenu.label"
+                    @click="handleJump(childmenu.name)">
+                    <el-icon>
+                        <component :is="childmenu.icon"></component>
+                    </el-icon>
+                    <span>{{ childmenu.label }}</span>
+                </el-menu-item>
+            </el-sub-menu>
+        </el-menu>
+    </div>
+</template>
+
+<script lang="js">
+import { useRouter } from 'vue-router';
+import { defineComponent, ref } from 'vue'
+export default defineComponent({
+    name: 'LeftBar',
+    setup() {
+        const menus = ref([
+            {
+                menuid: 71,
+                icon: 'Setting',
+                label: '系统管理',
+                url: null,
+                menus: [
+                    {
+                        menuid: 72,
+                        icon: 'User',
+                        label: '用户管理',
+                        name: 'user',
+                        url: 'system/user',
+                        menus: null
+                    },
+                    {
+                        menuid: 73,
+                        icon: 'Avatar',
+                        label: '角色管理',
+                        name: 'role',
+                        url: 'system/Role',
+                        menus: null
+                    },
+                    {
+                        menuid: 76,
+                        icon: 'Document',
+                        label: '日志管理',
+                        name: 'log',
+                        url: 'system/Permission',
+                        menus: null
+                    }
+                ]
+            },
+            {
+                menuid: 81,
+                icon: 'Notification',
+                label: '危险监控',
+                url: null,
+                menus: [
+                    {
+                        menuid: 82,
+                        icon: 'Connection',
+                        label: '车辆报错',
+                        name: 'car',
+                        url: 'system/car',
+                        menus: null
+                    },
+                ]
+            }
+        ])
+        const isCollapse = ref(false);
+
+        const router = useRouter();
+        const handleJump = (name) => {
+            router.push({
+                name,
+            })
+        }
+        return {
+            menus, isCollapse, handleJump
+        }
+    }
+})
+</script>
+
+<style scoped>
+.logobox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    text-align: center;
+    line-height: 50px;
+    background-color: #2d3d51;
+    color: #fff;
+}
+
+img {
+    width: 32px;
+    height: 32px;
+}
+
+.el-menu {
+    border: 0px;
+    height: 100vh;
+}
+</style>
