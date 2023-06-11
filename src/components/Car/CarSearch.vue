@@ -12,10 +12,7 @@
         <div class="search2">
             <span style="width: 80px;">车位号</span>
             <el-input placeholder="请输入车位号" v-model="ParNumSearch"></el-input>
-            <el-button style="margin-left: 10px;" type="primary" @click="search2" :icon="Search">
-                <el-icon>
-                    <Search />
-                </el-icon>
+            <el-button style="margin-left: 10px;" type="primary" @click="search2" icon="Search">
                 搜索</el-button>
         </div>
     </div>
