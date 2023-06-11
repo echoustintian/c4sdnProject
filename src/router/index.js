@@ -14,8 +14,18 @@ const router = createRouter({
           path: "/system/hostManage",
           name: hostManage,
           component: hostManage,
-        }
-      ]
+        },
+        {
+          path: "main",
+          name: "main",
+          component: () => import("../views/system/Main.vue"),
+        },
+        {
+          path: "carmanager",
+          name: "carmanager",
+          component: () => import("../views/car/CarManager.vue"),
+        },
+      ],
     },
     {
       path: "/login",
