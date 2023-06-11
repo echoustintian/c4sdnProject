@@ -62,6 +62,14 @@ export default defineComponent({
                         name: 'log',
                         url: 'system/Permission',
                         menus: null
+                    },
+                    {
+                        menuid: 77,
+                        icon: 'Document',
+                        label: '主机管理',
+                        name: 'hostManage',
+                        url: 'system/hostManage',
+                        menus: null
                     }
                 ]
             },

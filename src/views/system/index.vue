@@ -40,6 +40,7 @@ export default defineComponent({
 .main {
   height: calc(100vh - 65px);
   box-shadow: rgba(204, 219, 232, 0.5) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  padding: 0;
 }
 
 .header {

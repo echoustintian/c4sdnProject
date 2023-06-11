@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from "vue-router";
+import hostManage from '@/views/system/hostManage/hostManage.vue'
 
 const router = createRouter({
   // 使用 hash 模式
@@ -10,17 +11,18 @@ const router = createRouter({
       component: () => import("../views/system/index.vue"),
       children: [
         {
-          path: "main",
-          name: "main",
-          component: () => import("../views/system/Main.vue"),
-        },
-      ],
+          path: "/system/hostManage",
+          name: hostManage,
+          component: hostManage,
+        }
+      ]
     },
     {
       path: "/login",
       name: "login",
       component: () => import("../views/Login.vue"),
     },
+    
   ],
 });
 
