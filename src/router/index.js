@@ -14,6 +14,11 @@ const router = createRouter({
           name: "main",
           component: () => import("../views/system/Main.vue"),
         },
+        {
+          path: "carmanager",
+          name: "carmanager",
+          component: () => import("../views/car/CarManager.vue"),
+        },
       ],
     },
     {
