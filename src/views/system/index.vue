@@ -1,9 +1,10 @@
 <template>
   <div class="common-layout">
     <el-container>
-      <el-aside width="200px" class="asider">
+      <el-aside :width="CollapseStore.isCollapse ? '65px' : '220px'" class="asider">
         <LeftBar></LeftBar>
       </el-aside>
+
       <el-container>
         <el-header class="header">
           <Header></Header>
@@ -16,25 +17,21 @@
   </div>
 </template>
 
-<script lang="js">
-import { defineComponent, reactive } from 'vue'
+<script setup>
+
 import LeftBar from '@/components/LeftBar.vue'
 import Header from '@/components/Header.vue'
-import router from '@/router'
-export default defineComponent({
-  setup() {
+import { useCollapseStore } from '@/stores/collapse';
 
-    return {
 
-    }
-  },
-  components: { Header, LeftBar },
-})
+//折叠
+const CollapseStore = useCollapseStore();
 </script>
 
 <style scoped >
 .asider {
   height: 100vh;
+  transition: width 0.2s;
 }
 
 .main {

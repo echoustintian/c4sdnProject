@@ -2,7 +2,7 @@
     <div class="header">
         <div class="header-left">
             <el-icon style="cursor: pointer;" @click="handleCollapse">
-                <component :is="isCollapse?'Fold':'Expand'"> </component>
+                <component :is="CollapseStore.isCollapse?'Fold':'Expand'"> </component>
             </el-icon>
         </div>
         <div class="header-right">
@@ -28,35 +28,33 @@
     </div>
 </template>
 
-<script lang="js">
-import { defineComponent, reactive, ref } from 'vue'
-export default defineComponent({
-    name: 'Header',
-    setup() {
-        const isCollapse = ref(false);
+<script setup>
+import { reactive, ref } from 'vue'
 
-        const user = reactive({
-            name: '',
-            username: '',
-            password: '',
-            imgUrl: 'https://s1mimg.oss-cn-chengdu.aliyuncs.com/img/4.jpg',
-        })
-        const handleCollapse = () => {
-            isCollapse.value = !isCollapse.value;
-        };
 
-        const handleSetting = () => {
+import { useCollapseStore } from '@/stores/collapse';
 
-        }
 
-        const handleQuit = () => {
+//折叠
+const CollapseStore = useCollapseStore();
 
-        }
-        return {
-            handleCollapse, user, handleSetting, handleQuit, isCollapse
-        }
-    }
+const user = reactive({
+    name: '',
+    username: '',
+    password: '',
+    imgUrl: 'https://s1mimg.oss-cn-chengdu.aliyuncs.com/img/4.jpg',
 })
+const handleCollapse = () => {
+    CollapseStore.collapse();
+};
+
+const handleSetting = () => {
+
+}
+
+const handleQuit = () => {
+
+}
 </script>
 
 <style scoped>
