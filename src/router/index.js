@@ -12,13 +12,8 @@ const router = createRouter({
       children: [
         {
           path: "/system/hostManage",
-          name: hostManage,
+          name: "hostManage",
           component: hostManage,
-        },
-        {
-          path: "main",
-          name: "main",
-          component: () => import("../views/system/Main.vue"),
         },
         {
           path: "carmanager",

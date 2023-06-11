@@ -36,6 +36,7 @@ export default defineComponent({
         // router跳转
         const router = useRouter();
         const handleJump = (name) => {
+            console.log("test")
             router.push({
                 name,
             })
