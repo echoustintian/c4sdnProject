@@ -7,6 +7,9 @@
 
 <script setup>
 import { onMounted, ref } from "vue"
+
+const emit = defineEmits(['handleNodeClick']);
+
 const data = ref([])
 
 const getTreeData = () => {
@@ -43,6 +46,7 @@ onMounted(() => {
 const handleNodeClick = (data) => {
     console.log(data);
     //对应某种查询 等后端api
+    emit('handleNodeClick', data);
 }
 </script>
 

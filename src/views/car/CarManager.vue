@@ -2,7 +2,7 @@
     <div class="car">
         <el-row>
             <el-col :span="4">
-                <Tree></Tree>
+                <Tree @handleNodeClick="handleNodeClick"></Tree>
             </el-col>
             <el-col :span="20">
                 <div class="right">
@@ -81,6 +81,11 @@ const handleEdit = (data) => {
 }
 //dialog form
 const formData = ref({});
+
+//Tree组件
+const handleNodeClick = () => {
+    //Tree组件Node被点击之后  调后端条件查询
+}
 </script>
 
 <style scoped lang="less">
