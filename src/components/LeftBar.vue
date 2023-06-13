@@ -93,16 +93,16 @@ const getMenuData = () => {
                 {
                     menuid: 82,
                     icon: 'Connection',
-                    label: '车辆报错',
-                    name: 'car',
-                    url: 'system/car',
+                    label: '违停预警',
+                    name: 'illegalparking',
+                    url: 'forewarning/illegalparking',
                 },
             ]
         },
         {
             menuid: 91,
-            icon: 'Van',
-            label: '车辆管理',
+            icon: 'Setting',
+            label: '园区管理',
             url: null,
             menus: [
                 {
@@ -112,10 +112,20 @@ const getMenuData = () => {
                     name: 'carmanager',
                     url: 'car/carmanager',
                 },
+                {
+                    menuid: 93,
+                    icon: 'Avatar',
+                    label: '人员管理',
+                    name: 'peoplemanager',
+                    url: 'people/peopleManager',
+                },
             ]
         }
     ];
 }
+
+
+
 onMounted(() => {
     getMenuData();
 })

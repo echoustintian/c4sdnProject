@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import hostManage from '@/views/system/hostManage/hostManage.vue'
+import hostManage from "@/views/system/hostManage/hostManage.vue";
 
 const router = createRouter({
   // 使用 hash 模式
@@ -20,6 +20,16 @@ const router = createRouter({
           name: "carmanager",
           component: () => import("../views/car/CarManager.vue"),
         },
+        {
+          path: "illegalparking",
+          name: "illegalparking",
+          component: () => import("../views/ForeWarning/IllegalParking.vue"),
+        },
+        {
+          path: "peoplemanager",
+          name: "peoplemanager",
+          component: () => import("../views/People/PeopleManager.vue"),
+        },
       ],
     },
     {
@@ -27,7 +37,6 @@ const router = createRouter({
       name: "login",
       component: () => import("../views/Login.vue"),
     },
-    
   ],
 });
 
