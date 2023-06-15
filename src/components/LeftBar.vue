@@ -115,10 +115,18 @@ const getMenuData = () => {
                 {
                     menuid: 93,
                     icon: 'Avatar',
-                    label: '人员管理',
+                    label: '宿舍人员',
                     name: 'peoplemanager',
                     url: 'people/peopleManager',
                 },
+                {
+                    menuid: 94,
+                    icon: 'Timer',
+                    label: '晚归记录',
+                    name: 'laterecord',
+                    url: 'LateRecord/LateRecord',
+                },
+
             ]
         }
     ];

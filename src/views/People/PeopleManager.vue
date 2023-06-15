@@ -37,7 +37,7 @@ const people = ref([]);
 const totalNum = ref(0);
 const getPeopleData = () => {
     people.value = [{
-        id: 'X5-426',
+        id: '000001',
         name: '贺禹轩',
         position: '欣苑五栋',
         dormitoryNum: '426',

@@ -30,6 +30,11 @@ const router = createRouter({
           name: "peoplemanager",
           component: () => import("../views/People/PeopleManager.vue"),
         },
+        {
+          path: "laterecord",
+          name: "laterecord",
+          component: () => import("../views/LateRecord/LateRecord.vue"),
+        },
       ],
     },
     {
