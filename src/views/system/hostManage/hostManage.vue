@@ -1,106 +1,71 @@
 <template>
   <div class="main">
     <el-container>
-      <el-header>
-        <div class="input">
-          <el-button type="primary">新增</el-button>
-          <el-button type="danger">删除</el-button>
-        </div>
-      </el-header>
-      <el-main>
-        <div class="table">
-          <el-table :data="tableData" style="width: 100%">
-            <el-table-column type="selection" width="55" />
-            <el-table-column fixed prop="date" label="Date" width="150" />
-            <el-table-column prop="name" label="Name" width="120" />
-            <el-table-column prop="state" label="State" width="120" />
-            <el-table-column prop="city" label="City" width="120" />
-            <el-table-column prop="address" label="Address" width="600" />
-            <el-table-column prop="zip" label="Zip" width="120" />
-            <el-table-column fixed="right" label="Operations" width="160">
-              <template #default>
-                <el-button link type="primary" size="small" @click="handleClick"
-                  >Detail</el-button
-                >
-                <el-button link type="primary" size="small">Edit</el-button>
-              </template>
-            </el-table-column>
-          </el-table>
-        </div>
-      </el-main>
-      <el-footer><el-pagination background layout="prev, pager, next" :total="1000" /></el-footer>
+		<div class="right">
+	  <HostMain :data="Table"></HostMain>
+	  <HostFooter></HostFooter>
+		</div>
     </el-container>
   </div>
 </template>
 
-<script lang="js">
-import { defineComponent, reactive } from 'vue'
-export default defineComponent({
-  setup() {
+<script setup>
+import { defineComponent, reactive,onMounted, ref} from 'vue';
+import HostFooter from '@/components/Host/HostFooter.vue';
+import HostMain from '@/components/Host/HostMain.vue';
+
     const handleClick = () => {
       console.log('click')
     }
-
-    const tableData = [
-      {
+	const Table = ref([]);
+    const GetTableData = () => {
+       Table.value = [{
         date: '2016-05-03',
-        name: 'Tom',
-        state: 'California',
-        city: 'Los Angeles',
-        address: 'No. 189, Grove St, Los Angeles',
-        zip: 'CA 90036',
-        tag: 'Home',
-      },
-      {
-        date: '2016-05-02',
-        name: 'Tom',
-        state: 'California',
-        city: 'Los Angeles',
-        address: 'No. 189, Grove St, Los Angeles',
-        zip: 'CA 90036',
-        tag: 'Office',
+        name: 'jiang',
+        mac:'00:00:00:00:00:40',
+		ipaddress:'2001:2:4::1',
       },
       {
         date: '2016-05-04',
-        name: 'Tom',
-        state: 'California',
-        city: 'Los Angeles',
-        address: 'No. 189, Grove St, Los Angeles',
-        zip: 'CA 90036',
-        tag: 'Home',
+        name: 'xiaomi',
+        mac:'00:00:00:00:00:40',
+      	ipaddress:'2001:2:4::1',
       },
-      {
-        date: '2016-05-01',
-        name: 'Tom',
-        state: 'California',
-        city: 'Los Angeles',
-        address: 'No. 189, Grove St, Los Angeles',
-        zip: 'CA 90036',
-        tag: 'Office',
-      },
-      {
-        date: '2016-05-03',
-        name: 'Tom',
-        state: 'California',
-        city: 'Los Angeles',
-        address: 'No. 189, Grove St, Los Angeles',
-        zip: 'CA 90036',
-        tag: 'Home',
-      },
+	  {
+	    date: '2016-05-05',
+	    name: 'xiaoli',
+	    mac:'00:00:00:00:00:40',
+	  	ipaddress:'2001:2:4::1',
+	  },
+	  {
+	    date: '2016-05-06',
+	    name: 'xiaohua',
+	    mac:'00:00:00:00:00:40',
+	  	ipaddress:'2001:2:4::1',
+	  },
     ]
     return {
-      handleClick,
-      tableData
+      Table
     }
-  },
+   
+}
+onMounted(() => {
+    GetTableData();
+	// console.log("下面是table")
+	// console.log(Table);
 })
 </script>
 
-<style lang="less">
+<style scoped lang="less">
 .main{
-  height: 100%;
+  width: 100%;
+overflow-x: hidden;
 }
 .input{
   padding: 20px 0px;
 }
+.right {
+        width: 100%;
+        height: calc(100vh - 105px);
+        }
 </style>
