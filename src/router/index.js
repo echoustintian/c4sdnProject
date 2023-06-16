@@ -30,6 +30,11 @@ const router = createRouter({
           name: "peoplemanager",
           component: () => import("../views/People/PeopleManager.vue"),
         },
+        {
+          path: "flowMonitor",
+          name: "flowMonitor",
+          component: () => import("../views/ForeWarning/FlowMonitor.vue"),
+        },
       ],
     },
     {

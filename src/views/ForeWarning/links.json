@@ -1,0 +1,148 @@
+{
+    "links": [
+        {
+            "src": {
+                "port": "2",
+                "device": "device:leaf3"
+            },
+            "dst": {
+                "port": "3",
+                "device": "device:spine2"
+            },
+            "type": "DIRECT",
+            "state": "ACTIVE"
+        },
+        {
+            "src": {
+                "port": "1",
+                "device": "device:leaf2"
+            },
+            "dst": {
+                "port": "2",
+                "device": "device:spine1"
+            },
+            "type": "DIRECT",
+            "state": "ACTIVE"
+        },
+        {
+            "src": {
+                "port": "1",
+                "device": "device:leaf3"
+            },
+            "dst": {
+                "port": "3",
+                "device": "device:spine1"
+            },
+            "type": "DIRECT",
+            "state": "ACTIVE"
+        },
+        {
+            "src": {
+                "port": "2",
+                "device": "device:spine2"
+            },
+            "dst": {
+                "port": "2",
+                "device": "device:leaf2"
+            },
+            "type": "DIRECT",
+            "state": "ACTIVE"
+        },
+        {
+            "src": {
+                "port": "2",
+                "device": "device:leaf1"
+            },
+            "dst": {
+                "port": "1",
+                "device": "device:spine2"
+            },
+            "type": "DIRECT",
+            "state": "ACTIVE"
+        },
+        {
+            "src": {
+                "port": "1",
+                "device": "device:spine1"
+            },
+            "dst": {
+                "port": "1",
+                "device": "device:leaf1"
+            },
+            "type": "DIRECT",
+            "state": "ACTIVE"
+        },
+        {
+            "src": {
+                "port": "2",
+                "device": "device:leaf2"
+            },
+            "dst": {
+                "port": "2",
+                "device": "device:spine2"
+            },
+            "type": "DIRECT",
+            "state": "ACTIVE"
+        },
+        {
+            "src": {
+                "port": "1",
+                "device": "device:leaf1"
+            },
+            "dst": {
+                "port": "1",
+                "device": "device:spine1"
+            },
+            "type": "DIRECT",
+            "state": "ACTIVE"
+        },
+        {
+            "src": {
+                "port": "1",
+                "device": "device:spine2"
+            },
+            "dst": {
+                "port": "2",
+                "device": "device:leaf1"
+            },
+            "type": "DIRECT",
+            "state": "ACTIVE"
+        },
+        {
+            "src": {
+                "port": "3",
+                "device": "device:spine1"
+            },
+            "dst": {
+                "port": "1",
+                "device": "device:leaf3"
+            },
+            "type": "DIRECT",
+            "state": "ACTIVE"
+        },
+        {
+            "src": {
+                "port": "3",
+                "device": "device:spine2"
+            },
+            "dst": {
+                "port": "2",
+                "device": "device:leaf3"
+            },
+            "type": "DIRECT",
+            "state": "ACTIVE"
+        },
+        {
+            "src": {
+                "port": "2",
+                "device": "device:spine1"
+            },
+            "dst": {
+                "port": "1",
+                "device": "device:leaf2"
+            },
+            "type": "DIRECT",
+            "state": "ACTIVE"
+        }
+    ]
+}

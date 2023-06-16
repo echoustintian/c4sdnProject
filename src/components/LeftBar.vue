@@ -97,6 +97,13 @@ const getMenuData = () => {
                     name: 'illegalparking',
                     url: 'forewarning/illegalparking',
                 },
+                {
+                    menuid: 83,
+                    icon: 'Setting',
+                    label: '流量监控',
+                    url: 'forewarning/flowMonitor',
+                    name: 'flowMonitor'
+                }
             ]
         },
         {

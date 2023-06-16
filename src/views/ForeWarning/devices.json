@@ -1,0 +1,118 @@
+{
+	"devices": [{
+		"id": "device:leaf1",
+		"type": "SWITCH",
+		"available": true,
+		"role": "MASTER",
+		"mfr": "Open Networking Foundation",
+		"hw": "BMv2 simple_switch",
+		"sw": "Stratum",
+		"serial": "unknown",
+		"driver": "stratum-bmv2:org.onosproject.ngsdn-tutorial",
+		"chassisId": "0",
+		"lastUpdate": "1686898478762",
+		"humanReadableLastUpdate": "connected 15m52s ago",
+		"annotations": {
+			"driver": "stratum-bmv2",
+			"gridX": "200.0",
+			"gridY": "600.0",
+			"locType": "grid",
+			"managementAddress": "grpc://mininet:50001?device_id=1",
+			"name": "device:leaf1",
+			"p4DeviceId": "1",
+			"protocol": "P4Runtime, gNMI, gNOI"
+		}
+	}, {
+		"id": "device:spine1",
+		"type": "SWITCH",
+		"available": true,
+		"role": "MASTER",
+		"mfr": "Open Networking Foundation",
+		"hw": "BMv2 simple_switch",
+		"sw": "Stratum",
+		"serial": "unknown",
+		"driver": "stratum-bmv2:org.onosproject.ngsdn-tutorial",
+		"chassisId": "0",
+		"lastUpdate": "1686898478763",
+		"humanReadableLastUpdate": "connected 15m52s ago",
+		"annotations": {
+			"driver": "stratum-bmv2",
+			"gridX": "400.0",
+			"gridY": "400.0",
+			"locType": "grid",
+			"managementAddress": "grpc://mininet:50004?device_id=1",
+			"name": "device:spine1",
+			"p4DeviceId": "1",
+			"protocol": "P4Runtime, gNMI, gNOI"
+		}
+	}, {
+		"id": "device:spine2",
+		"type": "SWITCH",
+		"available": true,
+		"role": "MASTER",
+		"mfr": "Open Networking Foundation",
+		"hw": "BMv2 simple_switch",
+		"sw": "Stratum",
+		"serial": "unknown",
+		"driver": "stratum-bmv2:org.onosproject.ngsdn-tutorial",
+		"chassisId": "0",
+		"lastUpdate": "1686898478763",
+		"humanReadableLastUpdate": "connected 15m52s ago",
+		"annotations": {
+			"driver": "stratum-bmv2",
+			"gridX": "600.0",
+			"gridY": "400.0",
+			"locType": "grid",
+			"managementAddress": "grpc://mininet:50005?device_id=1",
+			"name": "device:spine2",
+			"p4DeviceId": "1",
+			"protocol": "P4Runtime, gNMI, gNOI"
+		}
+	}, {
+		"id": "device:leaf2",
+		"type": "SWITCH",
+		"available": true,
+		"role": "MASTER",
+		"mfr": "Open Networking Foundation",
+		"hw": "BMv2 simple_switch",
+		"sw": "Stratum",
+		"serial": "unknown",
+		"driver": "stratum-bmv2:org.onosproject.ngsdn-tutorial",
+		"chassisId": "0",
+		"lastUpdate": "1686898478764",
+		"humanReadableLastUpdate": "connected 15m52s ago",
+		"annotations": {
+			"driver": "stratum-bmv2",
+			"gridX": "800.0",
+			"gridY": "600.0",
+			"locType": "grid",
+			"managementAddress": "grpc://mininet:50002?device_id=1",
+			"name": "device:leaf2",
+			"p4DeviceId": "1",
+			"protocol": "P4Runtime, gNMI, gNOI"
+		}
+	}, {
+		"id": "device:leaf3",
+		"type": "SWITCH",
+		"available": true,
+		"role": "MASTER",
+		"mfr": "Open Networking Foundation",
+		"hw": "BMv2 simple_switch",
+		"sw": "Stratum",
+		"serial": "unknown",
+		"driver": "stratum-bmv2:org.onosproject.ngsdn-tutorial",
+		"chassisId": "0",
+		"lastUpdate": "1686898478770",
+		"humanReadableLastUpdate": "connected 15m52s ago",
+		"annotations": {
+			"driver": "stratum-bmv2",
+			"gridX": "1000.0",
+			"gridY": "600.0",
+			"locType": "grid",
+			"managementAddress": "grpc://mininet:50003?device_id=1",
+			"name": "device:leaf3",
+			"p4DeviceId": "1",
+			"protocol": "P4Runtime, gNMI, gNOI"
+		}
+	}]
+}

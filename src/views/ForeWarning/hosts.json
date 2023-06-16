@@ -1,0 +1,169 @@
+{
+	"hosts": [{
+		"id": "00:00:00:00:00:40/None",
+		"mac": "00:00:00:00:00:40",
+		"vlan": "None",
+		"innerVlan": "None",
+		"outerTpid": "0x0000",
+		"configured": false,
+		"suspended": false,
+		"ipAddresses": ["2001:2:4::1"],
+		"locations": [{
+			"elementId": "device:leaf2",
+			"port": "4"
+		}],
+		"annotations": {
+			"gridX": "850.0",
+			"gridY": "700.0",
+			"latitude": null,
+			"locType": "grid",
+			"longitude": null,
+			"name": "h4"
+		}
+	}, {
+		"id": "00:00:00:00:00:1C/None",
+		"mac": "00:00:00:00:00:1C",
+		"vlan": "None",
+		"innerVlan": "None",
+		"outerTpid": "0x0000",
+		"configured": false,
+		"suspended": false,
+		"ipAddresses": ["2001:1:1::c"],
+		"locations": [{
+			"elementId": "device:leaf1",
+			"port": "5"
+		}],
+		"annotations": {
+			"gridX": "250.0",
+			"gridY": "800.0",
+			"latitude": null,
+			"locType": "grid",
+			"longitude": null,
+			"name": "h1c"
+		}
+	}, {
+		"id": "00:00:00:00:00:1A/None",
+		"mac": "00:00:00:00:00:1A",
+		"vlan": "None",
+		"innerVlan": "None",
+		"outerTpid": "0x0000",
+		"configured": false,
+		"suspended": false,
+		"ipAddresses": ["2001:1:1::a"],
+		"locations": [{
+			"elementId": "device:leaf1",
+			"port": "3"
+		}],
+		"annotations": {
+			"gridX": "100.0",
+			"gridY": "700.0",
+			"latitude": null,
+			"locType": "grid",
+			"longitude": null,
+			"name": "h1a"
+		}
+	}, {
+		"id": "00:00:00:00:00:50/None",
+		"mac": "00:00:00:00:00:50",
+		"vlan": "None",
+		"innerVlan": "None",
+		"outerTpid": "0x0000",
+		"configured": false,
+		"suspended": false,
+		"ipAddresses": ["2001:3:3::1"],
+		"locations": [{
+			"elementId": "device:leaf3",
+			"port": "3"
+		}],
+		"annotations": {
+			"gridX": "1000.0",
+			"gridY": "200.0",
+			"locType": "grid",
+			"name": "h5"
+		}
+	}, {
+		"id": "00:00:00:00:00:20/None",
+		"mac": "00:00:00:00:00:20",
+		"vlan": "None",
+		"innerVlan": "None",
+		"outerTpid": "0x0000",
+		"configured": false,
+		"suspended": false,
+		"ipAddresses": ["2001:1:2::1"],
+		"locations": [{
+			"elementId": "device:leaf1",
+			"port": "6"
+		}],
+		"annotations": {
+			"gridX": "400.0",
+			"gridY": "700.0",
+			"latitude": null,
+			"locType": "grid",
+			"longitude": null,
+			"name": "h2"
+		}
+	}, {
+		"id": "00:00:00:00:00:1B/None",
+		"mac": "00:00:00:00:00:1B",
+		"vlan": "None",
+		"innerVlan": "None",
+		"outerTpid": "0x0000",
+		"configured": false,
+		"suspended": false,
+		"ipAddresses": ["2001:1:1::b"],
+		"locations": [{
+			"elementId": "device:leaf1",
+			"port": "4"
+		}],
+		"annotations": {
+			"gridX": "100.0",
+			"gridY": "800.0",
+			"latitude": null,
+			"locType": "grid",
+			"longitude": null,
+			"name": "h1b"
+		}
+	}, {
+		"id": "00:00:00:00:00:60/None",
+		"mac": "00:00:00:00:00:60",
+		"vlan": "None",
+		"innerVlan": "None",
+		"outerTpid": "0x0000",
+		"configured": false,
+		"suspended": false,
+		"ipAddresses": ["2001:3:4::1"],
+		"locations": [{
+			"elementId": "device:leaf3",
+			"port": "4"
+		}],
+		"annotations": {
+			"gridX": "1050.0",
+			"gridY": "200.0",
+			"latitude": null,
+			"locType": "grid",
+			"longitude": null,
+			"name": "h6"
+		}
+	}, {
+		"id": "00:00:00:00:00:30/None",
+		"mac": "00:00:00:00:00:30",
+		"vlan": "None",
+		"innerVlan": "None",
+		"outerTpid": "0x0000",
+		"configured": false,
+		"suspended": false,
+		"ipAddresses": ["2001:2:3::1"],
+		"locations": [{
+			"elementId": "device:leaf2",
+			"port": "3"
+		}],
+		"annotations": {
+			"gridX": "750.0",
+			"gridY": "700.0",
+			"latitude": null,
+			"locType": "grid",
+			"longitude": null,
+			"name": "h3"
+		}
+	}]
+}
