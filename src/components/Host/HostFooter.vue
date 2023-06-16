@@ -1,8 +1,10 @@
 
 <template>
-   <el-footer><div class="footer">
-		<el-pagination background layout="prev, pager, next" :total="1000" />
-	 </div></el-footer>
+	<el-footer>
+		<div class="footer">
+			<el-pagination background layout="prev, pager, next" :total="1000" />
+		</div>
+	</el-footer>
 </template>
  
 <script setup>
@@ -12,6 +14,6 @@
 <style scoped lang="less">
 .footer{
     width: 100%;
-    height: 65px;}
-
+    height: 65px;
+}
 </style>
