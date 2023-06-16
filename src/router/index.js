@@ -35,6 +35,11 @@ const router = createRouter({
           name: "flowMonitor",
           component: () => import("../views/ForeWarning/FlowMonitor.vue"),
         },
+        {
+          path: "laterecord",
+          name: "laterecord",
+          component: () => import("../views/LateRecord/LateRecord.vue"),
+        },
       ],
     },
     {

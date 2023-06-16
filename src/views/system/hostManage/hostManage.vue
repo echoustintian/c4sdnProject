@@ -1,106 +1,120 @@
 <template>
-  <div class="main">
-    <el-container>
-      <el-header>
-        <div class="input">
-          <el-button type="primary">新增</el-button>
-          <el-button type="danger">删除</el-button>
-        </div>
-      </el-header>
-      <el-main>
-        <div class="table">
-          <el-table :data="tableData" style="width: 100%">
-            <el-table-column type="selection" width="55" />
-            <el-table-column fixed prop="date" label="Date" width="150" />
-            <el-table-column prop="name" label="Name" width="120" />
-            <el-table-column prop="state" label="State" width="120" />
-            <el-table-column prop="city" label="City" width="120" />
-            <el-table-column prop="address" label="Address" width="600" />
-            <el-table-column prop="zip" label="Zip" width="120" />
-            <el-table-column fixed="right" label="Operations" width="160">
-              <template #default>
-                <el-button link type="primary" size="small" @click="handleClick"
-                  >Detail</el-button
-                >
-                <el-button link type="primary" size="small">Edit</el-button>
-              </template>
-            </el-table-column>
-          </el-table>
-        </div>
-      </el-main>
-      <el-footer><el-pagination background layout="prev, pager, next" :total="1000" /></el-footer>
-    </el-container>
-  </div>
+	<div class="main">
+		<el-container>
+			<div class="right">
+				<HostMain :data="Table"></HostMain>
+				<HostFooter></HostFooter>
+			</div>
+		</el-container>
+	</div>
 </template>
 
-<script lang="js">
-import { defineComponent, reactive } from 'vue'
-export default defineComponent({
-  setup() {
-    const handleClick = () => {
-      console.log('click')
-    }
-
-    const tableData = [
-      {
-        date: '2016-05-03',
-        name: 'Tom',
-        state: 'California',
-        city: 'Los Angeles',
-        address: 'No. 189, Grove St, Los Angeles',
-        zip: 'CA 90036',
-        tag: 'Home',
-      },
-      {
-        date: '2016-05-02',
-        name: 'Tom',
-        state: 'California',
-        city: 'Los Angeles',
-        address: 'No. 189, Grove St, Los Angeles',
-        zip: 'CA 90036',
-        tag: 'Office',
-      },
-      {
-        date: '2016-05-04',
-        name: 'Tom',
-        state: 'California',
-        city: 'Los Angeles',
-        address: 'No. 189, Grove St, Los Angeles',
-        zip: 'CA 90036',
-        tag: 'Home',
-      },
-      {
-        date: '2016-05-01',
-        name: 'Tom',
-        state: 'California',
-        city: 'Los Angeles',
-        address: 'No. 189, Grove St, Los Angeles',
-        zip: 'CA 90036',
-        tag: 'Office',
-      },
-      {
-        date: '2016-05-03',
-        name: 'Tom',
-        state: 'California',
-        city: 'Los Angeles',
-        address: 'No. 189, Grove St, Los Angeles',
-        zip: 'CA 90036',
-        tag: 'Home',
-      },
-    ]
-    return {
-      handleClick,
-      tableData
-    }
-  },
+<script setup>
+import { defineComponent, reactive,onMounted, ref} from 'vue';
+import HostFooter from '@/components/Host/HostFooter.vue';
+import HostMain from '@/components/Host/HostMain.vue';
+const handleClick = () => {
+    console.log('click')
+}
+const Table = ref([]);
+const GetTableData = () => {		
+	Table.value = [{
+		"id":"00:00:00:00:00:40/None",
+		"mac":"00:00:00:00:00:40",
+		"vlan":"None",
+		"innerVlan":"None",
+		"outerTpid":"0x0000",
+		"configured":false,
+		"suspended":false,
+		"ipAddresses":[
+		"2001:2:4::1"
+		],
+		//获取与主机相连的交换机
+		"locations":[{
+		"elementId":"device:leaf2",
+		"port":"4"
+		}],
+		"annotations":{
+		"gridX":"850.0",
+		"gridY":"700.0",
+		"latitude":null,
+		"locType":"grid",
+		"longitude":null,
+		"name":"h4"//name信息可以用于获取链路时延
+		}      
+	},
+	{
+		"id":"00:00:00:00:00:50/None",
+		"mac":"00:00:00:00:00:50",
+		"vlan":"None",
+		"innerVlan":"None",
+		"outerTpid":"0x0000",
+		"configured":false,
+		"suspended":false,
+		"ipAddresses":[
+		"2001:2:4::3"
+		],
+		//获取与主机相连的交换机
+		"locations":[{
+		"elementId":"device:leaf2",
+		"port":"4"
+		}],
+		"annotations":{
+		"gridX":"850.0",
+		"gridY":"700.0",
+		"latitude":null,
+		"locType":"grid",
+		"longitude":null,
+		"name":"h5"//name信息可以用于获取链路时延
+		}      
+	},
+	{
+		"id":"00:00:00:00:00:60/None",
+		"mac":"00:00:00:00:00:60",
+		"vlan":"None",
+		"innerVlan":"None",
+		"outerTpid":"0x0000",
+		"configured":false,
+		"suspended":false,
+		"ipAddresses":[
+		"2001:2:4::2"
+		],
+		//获取与主机相连的交换机
+		"locations":[{
+		"elementId":"device:leaf2",
+		"port":"4"
+		}],
+		"annotations":{
+		"gridX":"850.0",
+		"gridY":"700.0",
+		"latitude":null,
+		"locType":"grid",
+		"longitude":null,
+		"name":"h6"//name信息可以用于获取链路时延
+		}      
+	},
+	]    
+return {
+      Table
+}  
+}
+onMounted(() => {
+    GetTableData();
+	console.log("下面是table")
+	console.log(Table);
 })
 </script>
 
-<style lang="less">
+<style scoped lang="less">
 .main{
-  height: 100%;
+	width: 100%;
+	overflow-x: hidden;
 }
 .input{
-  padding: 20px 0px;
+	padding: 20px 0px;
+}
+.right {
+    width: 100%;
+    height: calc(100vh - 105px);
 }
 </style>
