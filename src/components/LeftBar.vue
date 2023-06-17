@@ -93,7 +93,7 @@ const getMenuData = () => {
                 {
                     menuid: 82,
                     icon: 'Connection',
-                    label: '违停预警',
+                    label: '预警统计',
                     name: 'illegalparking',
                     url: 'forewarning/illegalparking',
                 },
@@ -103,6 +103,13 @@ const getMenuData = () => {
                     label: '流量监控',
                     url: 'forewarning/flowMonitor',
                     name: 'flowMonitor'
+                },
+                {
+                    menuid: 84,
+                    icon: 'VideoCamera',
+                    label: '监控内容',
+                    url: 'forewarning/cameradisplay',
+                    name: 'camera'
                 }
             ]
         },

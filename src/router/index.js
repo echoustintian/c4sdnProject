@@ -40,6 +40,11 @@ const router = createRouter({
           name: "laterecord",
           component: () => import("../views/LateRecord/LateRecord.vue"),
         },
+        {
+          path: "camera",
+          name: "camera",
+          component: () => import("../views/ForeWarning/CameraDisplay.vue"),
+        },
       ],
     },
     {
