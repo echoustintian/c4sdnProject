@@ -17,26 +17,45 @@ const getTreeData = () => {
     data.value = [{
         label: '东部停车场',
         children: [{
-            label: "-1层"
+            label: 1,
         },
         {
-            label: "-2层"
+            label: 2,
         },
         {
-            label: "-3层"
+            label: 3,
         },
+        {
+            label: -1,
+        },
+        {
+            label: -2,
+        },
+        {
+            label: -3,
+        }
         ]
     }, {
         label: '操场停车场',
         children: [{
-            label: "-1层"
+            label: 1,
         },
         {
-            label: "-2层"
+            label: 2,
         },
         {
-            label: "-3层"
-        },]
+            label: 3,
+        },
+        {
+            label: -1,
+        },
+        {
+            label: -2,
+        },
+        {
+            label: -3,
+        }
+        ]
     }]
 }
 onMounted(() => {
@@ -44,7 +63,6 @@ onMounted(() => {
 })
 
 const handleNodeClick = (data) => {
-    console.log(data);
     //对应某种查询 等后端api
     emit('handleNodeClick', data);
 }

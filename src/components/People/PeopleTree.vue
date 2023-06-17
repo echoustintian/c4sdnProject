@@ -7,6 +7,8 @@
 
 <script setup>
 import { onMounted, ref } from "vue"
+
+const emit = defineEmits(['handleNodeClick'])
 const data = ref([])
 
 const getTreeData = () => {

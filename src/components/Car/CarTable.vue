@@ -16,11 +16,12 @@
             :header-cell-style="{ textAlign: 'center', background: 'rgb(248, 248, 249)' }"
             @selection-change="handleSelectionChange">
             <el-table-column type="selection" width="55" />
-            <el-table-column prop="CarNumber" label="车牌号" />
+            <el-table-column prop="carNumber" label="车牌号" />
             <el-table-column prop="parking" label="停车点" />
             <el-table-column prop="floor" label="层数" />
+            <el-table-column prop="identity" label="类型" />
             <el-table-column prop="position" label="车位号" />
-            <el-table-column prop="enterTime" label="进入时间" />
+            <el-table-column prop="enterTime" label="进入时间" width="180" />
             <el-table-column fixed="right" label="操作">
                 <template #default="scope">
                     <el-dropdown>
@@ -43,16 +44,17 @@
                 </template>
             </el-table-column>
         </el-table>
+        <div style="display: flex; flex-direction: row-reverse; margin-right: 20px;">
+            <el-pagination background layout="prev, pager, next" :total="totalNum" @current-change="pageChange" />
+        </div>
     </div>
 </template>
-
-
-
 <script setup>
 import { ref } from "vue"
+import { CarService } from "@/api/api"
 
-const props = defineProps(['data'])
-const emit = defineEmits(['clickAdd', 'clickEdit', 'getData'])
+const props = defineProps(['data', 'totalNum'])
+const emit = defineEmits(['clickAdd', 'clickEdit', 'getData', 'pageChange'])
 const multipleSelection = ref([])
 const handleSelectionChange = (val) => {
     multipleSelection.value = val
@@ -65,11 +67,28 @@ const handleEdit = (data) => {
     emit('clickEdit', data)
 }
 const handleDelete = (id) => {
-    //调Api根据ID删除,然后再重新获取
-    emit('getData');
+    CarService.deleteCar({ id }).then(res => {
+        console.log(res);
+    }).catch(err => {
+        console.log(err);
+    })
+    //延迟1s
+    setTimeout(() => {
+        emit('getData');
+    }, 1000);
 }
 const handleDeleteAll = () => {
-    console.log(multipleSelection);
+    const send = multipleSelection.value.map(item => item.id)
+    CarService.deleteAllCar(send).then(res => {
+        console.log(res);
+    }).catch(err => {
+        console.log(err);
+    })
+    emit('getData');
+}
+
+const pageChange = (value) => {
+    emit('pageChange', value)
 }
 </script>
 

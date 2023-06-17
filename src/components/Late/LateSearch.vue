@@ -2,7 +2,7 @@
     <div class="search" style="margin-right: 20px;">
         <div style="display: flex;">
             <el-date-picker v-model="dateValue" type="date" placeholder="选择日期" :disabled-date="disabledDate"
-                :shortcuts="shortcuts" />
+                :shortcuts="shortcuts" value-format="YYYY-MM-DD" />
             <el-input placeholder="请输入学生名" v-model="value" style="margin-right: 10px; margin-left: 10px;"></el-input>
             <el-button @click="HandleSearch" type="primary">搜索</el-button>
         </div>

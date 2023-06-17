@@ -6,8 +6,9 @@
             </el-col>
             <el-col :span="20">
                 <div class="right">
-                    <CarSearch @search1="LicPlateNumSearch" @search2="ParNumSearch"></CarSearch>
-                    <CarTable :data="Cars" @clickAdd='handleAdd' @clickEdit="handleEdit" @getData="getCars"></CarTable>
+                    <CarSearch @search="search"></CarSearch>
+                    <CarTable :data="Cars" @clickAdd='handleAdd' @clickEdit="handleEdit" @getData="getCars"
+                        :totalNum="totalNum" @pageChange="pageChange"></CarTable>
                 </div>
             </el-col>
         </el-row>
@@ -21,42 +22,44 @@ import CarSearch from '@/components/Car/CarSearch.vue';
 import CarTable from '@/components/Car/CarTable.vue';
 import CarDialog from '@/components/Car/CarDialog.vue';
 import Tree from '@/components/Car/Tree.vue';
+import { CarService } from '@/api/api';
 //搜索
-const LicPlateNumSearch = (LicPlateNumSearch) => {
-    console.log(LicPlateNumSearch);
-}
-const ParNumSearch = (ParNumSearch) => {
-    console.log(ParNumSearch);
+const search = (carNumber, position) => {
+    SearchCar.carNumber = carNumber;
+    SearchCar.position = position;
+    getCars();
 }
 //车辆信息
 const Cars = ref([]);
-const getCars = () => {
-    Cars.value = [{
-        CarId: '1',
-        CarNumber: '川K-94A12',
-        parking: '西停车场',
-        floor: '-2',
-        position: 'B-292',
-        enterTime: '2023-6-10 12:53',
-    }, {
-        CarId: '2',
-        CarNumber: '川A-94A12',
-        parking: '东停车场',
-        floor: '-2',
-        position: 'B-292',
-        enterTime: '2023-6-10 12:53',
-    },
-    {
-        CarId: '3',
-        CarNumber: '川C-94A12',
-        parking: '北停车场',
-        floor: '-2',
-        position: 'B-292',
-        enterTime: '2023-6-10 12:53',
-    },]
+let SearchCar = {
+    carNumber: '',
+    parking: '',
+    floor: '',
+    position: '',
+}
+
+const currentPage = ref(1)
+const totalNum = ref(0)
+const pageChange = (value) => {
+    currentPage.value = value
+    getCars();
+}
+const getCars = (offset = currentPage.value) => {
+    CarService.getCarListByCondition(SearchCar, { offset, size: 10 }).then(res => {
+        if (res.data != null) {
+            console.log(res.data.row);
+            Cars.value = res.data.row;
+            totalNum.value = res.data.total;
+        } else {
+            Cars.value = [];
+            totalNum.value = 0;
+        }
+    }).catch(err => {
+        console.log(err);
+    })
 }
 onMounted(() => {
-    getCars();
+    getCars(1);
 })
 //dialog
 const dialogVisible = ref(false);
@@ -66,10 +69,11 @@ const handleAdd = () => {
     dialogVisible.value = true;
     dialogTitile.value = '新增'
     formData.value = {
-        CarId: null,
-        CarNumber: null,
+        carId: null,
+        carNumber: null,
         parking: null,
         floor: null,
+        identity: null,
         position: null,
         enterTime: null,
     }
@@ -77,14 +81,21 @@ const handleAdd = () => {
 const handleEdit = (data) => {
     dialogVisible.value = true;
     dialogTitile.value = '编辑'
+    console.log(data);
     formData.value = data;
 }
 //dialog form
 const formData = ref({});
 
 //Tree组件
-const handleNodeClick = () => {
-    //Tree组件Node被点击之后  调后端条件查询
+const handleNodeClick = (data) => {
+    if (data.children) {
+        SearchCar.parking = data.label;
+    }
+    else {
+        SearchCar.floor = data.label;
+    }
+    getCars();
 }
 </script>
 

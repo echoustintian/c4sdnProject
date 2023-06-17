@@ -12,7 +12,7 @@
             <el-table-column prop="room" label="房间" />
             <el-table-column fixed="right" label="操作">
                 <template #default="scope">
-                    <el-button type="danger" @click="handleDelete(scope.row.id)">
+                    <el-button type="danger" @click="handleDelete(scope.row.id)" size="small">
                         <el-icon>
                             <Close />
                         </el-icon>
@@ -20,14 +20,18 @@
                 </template>
             </el-table-column>
         </el-table>
+        <div style="display: flex; flex-direction: row-reverse; margin-right: 20px;">
+            <el-pagination background layout="prev, pager, next" :total="totalNum" @current-change="handleCurrentChange" />
+        </div>
+
     </div>
 </template>
 
 <script setup>
 import { ref, watch } from "vue";
 
-const emit = defineEmits(['SectionChange', 'getData'])
-const props = defineProps(['data'])
+const emit = defineEmits(['SectionChange', 'getData', 'pageChange'])
+const props = defineProps(['data', 'totalNum'])
 
 const multipleSelection = ref([])
 const handleSelectionChange = (val) => {
@@ -41,7 +45,9 @@ const handleDelete = (id) => {
     console.log(id);
     emit('getData');
 }
-
+const handleCurrentChange = (value) => {
+    emit('pageChange', value)
+}
 </script>
 
 <style scoped lang="less"></style>

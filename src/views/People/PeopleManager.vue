@@ -6,13 +6,15 @@
             </el-col>
             <el-col :span="20">
                 <div class="right">
-                    <Search @search="handleSearch" :isBack="isBack" @isBackChange="isBackChange"></Search>
-                    <Table :data="people" :totalNum="totalNum" @getdata="getPeopleData" @clickAdd="handleAdd"
-                        @clickEdit="handleEdit"></Table>
+                    <Search @search="handleSearch"></Search>
+                    <Table :data="people" @getData="getPeopleListByCondition" @clickAdd="handleAdd" @clickEdit="handleEdit"
+                        :totalNum="totalNum" @pageChange="pageChange">
+                    </Table>
                 </div>
             </el-col>
         </el-row>
-        <PeopleDialog v-model="dialogVisible" :title="dialogTitile" :formData="formData" @getData="getPeopleData">
+        <PeopleDialog v-model="dialogVisible" :title="dialogTitile" :formData="formData"
+            @getData="getPeopleListByCondition">
         </PeopleDialog>
     </div>
 </template>
@@ -23,41 +25,46 @@ import Search from '@/components/People/Search.vue';
 import Table from '@/components/People/Table.vue';
 import PeopleTree from "@/components/People/PeopleTree.vue"
 import PeopleDialog from '@/components/People/PeopleDialog.vue';
+import { PeopleService } from '@/api/api.js'
+
 //搜索栏Search
-const handleSearch = (value) => {
-    console.log(value);
+
+let searchValue = {
+    room: '',
+    name: '',
 }
-const isBack = ref(false);
-const isBackChange = (value) => {
-    isBack.value = value;
+const getPeopleListByCondition = (offset = currentpage.value) => {
+    PeopleService.getPeopleListByCondition(searchValue, { offset, size: 10 }).then(res => {
+        people.value = res.data.row;
+        totalNum.value = res.data.total;
+    }).catch(err => {
+        console.log(err);
+    })
+}
+const handleSearch = (room, name) => {
+    searchValue.room = room
+    searchValue.name = name
+    getPeopleListByCondition(1)
 }
 
 //列表Table
 const people = ref([]);
 const totalNum = ref(0);
-const getPeopleData = () => {
-    people.value = [{
-        id: '000001',
-        name: '贺禹轩',
-        position: '欣苑五栋',
-        dormitoryNum: '426',
-        isIn: false,
-        lastEnterTime: '2023-6-3 15:40',
-        lastLeaveTime: '2023-6-3 15:42',
-    }, {
-        id: 'X5-426',
-        name: '王鑫磊',
-        position: '欣苑五栋',
-        dormitoryNum: '426',
-        isIn: true,
-        lastEnterTime: '2023-6-3 15:40',
-        lastLeaveTime: '2023-6-3 15:42',
-    },
-    ]
-    totalNum.value = people.value.length;
+const currentpage = ref(1);
+const pageChange = (value) => {
+    currentpage.value = value
 }
+
+// const getPeopleData = (offset = currentpage.value) => {
+//     PeopleService.getPeopleList({ offset, size: 10 }).then(res => {
+//         people.value = res.data.records;
+//         totalNum.value = res.data.total;
+//     }).catch(err => {
+//         console.log(err);
+//     })
+// }
 onMounted(() => {
-    getPeopleData();
+    getPeopleListByCondition(1);
 })
 //dialog
 const dialogVisible = ref(false);
@@ -67,17 +74,16 @@ const handleAdd = () => {
     dialogVisible.value = true;
     dialogTitile.value = '新增'
     formData.value = {
-        id: '',
+        studentNumber: '',
         name: '',
-        position: '',
-        dormitoryNum: '',
-        isIn: null,
+        dormitory: '',
+        room: '',
+        inStatus: null,
         lastEnterTime: '',
         lastLeaveTime: '',
     }
 }
 const handleEdit = (data) => {
-    console.log(data);
     formData.value = data;
     dialogVisible.value = true;
     dialogTitile.value = '编辑'

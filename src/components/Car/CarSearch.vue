@@ -3,7 +3,7 @@
         <div class="search1">
             <span style="width: 80px;">车牌号</span>
             <el-input placeholder="请输入车牌号" v-model="LicPlateNumSearch"></el-input>
-            <el-button style="margin-left: 10px;" type="primary" @click="search1">
+            <el-button style="margin-left: 10px;" type="primary" @click="search">
                 <el-icon>
                     <Search />
                 </el-icon>搜索
@@ -12,7 +12,7 @@
         <div class="search2">
             <span style="width: 80px;">车位号</span>
             <el-input placeholder="请输入车位号" v-model="ParNumSearch"></el-input>
-            <el-button style="margin-left: 10px;" type="primary" @click="search2" icon="Search">
+            <el-button style="margin-left: 10px;" type="primary" @click="search" icon="Search">
                 搜索</el-button>
         </div>
     </div>
@@ -22,13 +22,11 @@
 import { ref, defineEmits } from 'vue';
 const LicPlateNumSearch = ref('');
 const ParNumSearch = ref('');
-const emit = defineEmits(["search1", "search2"])
-const search1 = () => {
-    emit("search1", LicPlateNumSearch.value);
+const emit = defineEmits(["search"])
+const search = () => {
+    emit("search", LicPlateNumSearch.value, ParNumSearch.value);
 }
-const search2 = () => {
-    emit("search2", ParNumSearch.value);
-}
+
 </script>
 
 <style scoped lang="less">
