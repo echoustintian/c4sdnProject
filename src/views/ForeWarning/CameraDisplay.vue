@@ -18,9 +18,11 @@
                                     :value="item.value" />
                             </el-select>
                             <el-button type="primary" style="margin-left: 20px;" size="default"
-                                @click="HandlePlay(video.id)">播放</el-button>
+                                @click="HandlePlay(video)">播放</el-button>
                         </div>
-                        <video :src="video.link"></video>
+                        <video class="video-js vjs-default-skin" :id="video.id">
+                            <source />
+                        </video>
                     </div>
                 </div>
             </el-col>
@@ -30,6 +32,7 @@
 
 <script setup>
 import { ref } from "vue";
+import videojs from "video.js";
 const tree = ref([{
     label: '查看校门口摄像头'
 }, {
@@ -46,41 +49,66 @@ const tree = ref([{
 ])
 const videos = ref([
     {
-        id: 1,
+        id: "tv1",
         url: "",
         link: '',
     },
     {
-        id: 2,
+        id: "tv2",
         url: "",
         link: '',
     },
     {
-        id: 3,
+        id: "tv3",
         url: "",
         link: '',
     },
     {
-        id: 4,
+        id: "tv4",
         url: "",
         link: '',
     }
 ]);
 const options = ref([{
     label: 'h1',
-    value: 'https://www.bilibili.com/video/BV1Gk4y1H7TE',
+    value: 'http://ivi.bupt.edu.cn/hls/jshd.m3u8',
 },
 {
     label: 'h2',
-    value: 'http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8',
+    value: 'http://192.168.3.3:8080/index.m3u8',
 },])
-const HandlePlay = (id) => {
-    videos.value.forEach((item) => {
-        if (item.id === id) {
-            item.link = item.url;
-        }
+const HandlePlay = (video) => {
+    getVideo(video.id);
+    var myPlayer = videojs(video.id);
+    myPlayer.src({
+        src: video.url,
+        type: "application/x-mpegURL"
     });
+    myPlayer.play();
 }
+
+//video播放相关
+const getVideo = (id) => {
+    videojs(
+        id,
+        {
+            width: 340,
+            height: 252,
+            fill: true,
+            bigPlayButton: false,
+            textTrackDisplay: false,
+            posterImage: false,
+            errorDisplay: false,
+            controlBar: false,
+        },
+        function () {
+            this.play();
+        }
+    );
+}
+
+//获取hls视频流并且播放
+
 </script>
 
 <style scoped lang="less">
@@ -106,9 +134,20 @@ const HandlePlay = (id) => {
             margin: 20px;
         }
 
+        .video-js {
+            background-color: #fff;
+        }
+
         video {
             width: 90%;
             height: 90%;
+            overflow: hidden;
+            background-color: #fff;
+            object-fit: cover;
+        }
+
+        video:focus {
+            outline: none;
         }
     }
 }

@@ -14,7 +14,7 @@ const data = ref([])
 const getTreeData = () => {
     //获取数据
     data.value = [{
-        label: '欣苑四栋',
+        label: '宿舍楼1号',
         children: [{
             label: "一层"
         },
@@ -26,7 +26,7 @@ const getTreeData = () => {
         },
         ]
     }, {
-        label: '欣苑五栋',
+        label: '宿舍楼2号',
         children: [{
             label: "一层"
         },
